@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const VantaBackground = () => {
+const VantaBackground = ({ children }) => {
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState(null);
 
   useEffect(() => {
-    // Check if VANTA and THREE are available before initializing
     if (!vantaEffect && window.VANTA && window.THREE) {
       setVantaEffect(
         window.VANTA.NET({
@@ -13,33 +12,33 @@ const VantaBackground = () => {
           THREE: window.THREE,
           mouseControls: true,
           touchControls: true,
-          minHeight: 500.00,
-          minWidth: 500.00,
-          scale: 1.00,
-          scaleMobile: 1.00,
-          pointSize: 9.00,
-          color:0xFC0848, // Color of the net lines
-          backgroundColor: 0x0C0C14, // Background color (optional)
-          points: 12.00, // Number of points
-          maxDistance: 19.00, // Maximum distance between points to draw a line
-          spacing: 12.00 // Spacing between points
+          minHeight: 500.0,
+          minWidth: 500.0,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          pointSize: 9.0,
+          color: 0xfc0848,
+          backgroundColor: 0x0c0c14,
+          points: 12.0,
+          maxDistance: 19.0,
+          spacing: 12.0,
         })
       );
     }
 
-    // Cleanup function to destroy the Vanta effect when the component unmounts
     return () => {
-      if (vantaEffect) {
-        vantaEffect.destroy();
-      }
+      if (vantaEffect) vantaEffect.destroy();
     };
-  }, [vantaEffect]); // Re-run effect only if vantaEffect changes
+  }, [vantaEffect]);
 
   return (
-    <div
-      ref={vantaRef}
-      className="fixed top-0 left-0 w-full h-full -z-10"
-    />
+    <div className="relative w-full min-h-screen">
+      {/* Vanta Background Canvas */}
+      <div ref={vantaRef} className="fixed top-0 left-0 w-full h-full -z-10" />
+
+      {/* Main App Content */}
+      <div className="relative z-10">{children}</div>
+    </div>
   );
 };
 
