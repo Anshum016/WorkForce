@@ -6,6 +6,7 @@ import Tools from './Components/Tools';
 import Contact from './Components/Contact';
 import React from 'react';
 import VantaBackgorund from './Components/VantaBackground';
+import Footer from './Components/Footer';
 
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
       </Routes>
       </VantaBackgorund>
+      <Footer/>
+
     </Router>
   );
 }

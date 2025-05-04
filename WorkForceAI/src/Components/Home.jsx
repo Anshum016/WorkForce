@@ -9,7 +9,8 @@ import Footer from './Footer';
 const Home = () => {
   return (
     <div className='whole page'>
-      <div className=' flex flex-col md:flex-row hero-section text-amber-50 font-extrabold my-4 md:mt-32  mx-10'>
+      <div className='flex flex-col md:flex-row hero-section text-amber-50 font-extrabold my-4 md:mt-24 lg:mt-40 mx-10'>
+
         <div className='text-section md:pr-20 md:pb-20'>
 
 
@@ -35,7 +36,7 @@ const Home = () => {
 
       <Carousel />
       <Technologies />
-      <Footer/>
+      
     </div>
 
 
